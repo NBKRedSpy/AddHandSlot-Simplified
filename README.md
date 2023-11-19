@@ -9,5 +9,5 @@ This forked version of "Add Hand Slot" strips all functionality except the view 
 # Changes
 
 * Removes Mod Loader reference/need
-* Removes the ability to change the hand size.  (Required by Mod Loader).
+* Removes the ability to change to change the game's default hand size.  (Required by Mod Loader).
 
