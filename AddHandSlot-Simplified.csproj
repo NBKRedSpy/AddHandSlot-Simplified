@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>AddHandSlot_Simplified</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <TargetFramework>net48</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>11.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="BepInEx">
+      <HintPath>D:\Games\Steam\steamapps\common\Card Survival Tropical Island\BepInEx\core\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp" Publicize="true">
+      <HintPath>D:\Games\Steam\steamapps\common\Card Survival Tropical Island\Card Survival - Tropical Island_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>D:\Games\Steam\steamapps\common\Card Survival Tropical Island\BepInEx\core\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>D:\Games\Steam\steamapps\common\Card Survival Tropical Island\Card Survival - Tropical Island_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>D:\Games\Steam\steamapps\common\Card Survival Tropical Island\Card Survival - Tropical Island_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+
+
+	  <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.1" PrivateAssets="all" />
+
+	  <!-- Publicize directly when referencing --><!--
+	  <Reference Include=".../TestProject.dll" Publicize="true" />
+	  <ProjectReference Include="../TestProject/TestProject.csproj" Publicize="true" />
+	  <PackageReference Include="TestProject" Publicize="true" />-->
+
+	  <!-- Publicize by assembly name --><!--
+	  <Publicize Include="TestProject" />-->
+  </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy /y &quot;$(ProjectDir)$(OutDir)$(AssemblyName).dll&quot; &quot;D:\Games\Steam\steamapps\common\Card Survival Tropical Island\BepInEx\plugins\&quot;" />
+  </Target>
+</Project>
